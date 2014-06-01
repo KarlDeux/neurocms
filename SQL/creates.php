@@ -1,0 +1,402 @@
+<?php
+
+/*
+ * NeuroCMS
+ * https://github.com/KarlDeux/neurocms
+ *
+ * Copyright 2014, Carlos Lizaga
+ * http://www.neurotix.es
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+/*
+CREATE TABLE IF NOT EXISTS `neuro_admin` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `username` varchar(50) NOT NULL DEFAULT '',
+    `nicename` varchar(255) NOT NULL DEFAULT '',
+    `email` varchar(255) NOT NULL DEFAULT '',
+    `password` varchar(255) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `username` (`username`),
+    UNIQUE KEY `nicename` (`nicename`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+
+INSERT INTO `neuro_admin` (`username`, `nicename`, `email`, `password`)
+VALUES (
+'default', 'default', 'default@default.com', SHA1('12345')
+);
+
+CREATE TABLE IF NOT EXISTS `neuro_article` (
+    `id` int(15) NOT NULL,
+    `article_type` varchar(10) DEFAULT NULL,
+    `publisher` varchar(25) DEFAULT NULL,
+    `article_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `neuro_article` (`id`, `article_type`, `publisher`, `article_date`) VALUES
+(1, 'image', 'default', '2014-05-29 19:53:27'),
+(2, 'image', 'default', '2014-05-29 19:57:48'),
+(3, 'image', 'default', '2014-05-29 19:59:45'),
+(4, 'image', 'default', '2014-05-29 20:03:37'),
+(5, 'image', 'default', '2014-05-29 20:09:11'),
+(6, 'image', 'default', '2014-05-29 20:10:45'),
+(7, 'image', 'default', '2014-05-29 20:13:31'),
+(8, 'image', 'default', '2014-05-29 20:14:27'),
+(9, 'image', 'default', '2014-05-29 20:15:13'),
+(10, 'image', 'default', '2014-05-29 20:16:29'),
+(11, 'image', 'default', '2014-05-29 20:17:16'),
+(12, 'image', 'default', '2014-05-29 20:18:01'),
+(13, 'image', 'default', '2014-05-29 20:18:35'),
+(14, 'image', 'default', '2014-05-29 20:19:14'),
+(15, 'image', 'default', '2014-05-29 20:20:19'),
+(16, 'image', 'default', '2014-05-29 20:21:25'),
+(17, 'image', 'default', '2014-05-29 20:22:30'),
+(18, 'image', 'default', '2014-05-29 20:23:09'),
+(19, 'image', 'default', '2014-05-29 20:23:50'),
+(20, 'image', 'default', '2014-05-29 20:24:35'),
+(21, 'image', 'default', '2014-05-29 20:25:55'),
+(22, 'image', 'default', '2014-05-29 20:26:43'),
+(23, 'image', 'default', '2014-05-29 20:27:51'),
+(24, 'image', 'default', '2014-05-29 20:28:31'),
+(25, 'image', 'default', '2014-05-29 20:29:13'),
+(26, 'image', 'default', '2014-05-29 20:30:06'),
+(27, 'image', 'default', '2014-05-29 20:30:46'),
+(28, 'image', 'default', '2014-05-29 20:31:25'),
+(29, 'image', 'default', '2014-05-29 20:32:19'),
+(30, 'image', 'default', '2014-05-29 20:33:22'),
+(31, 'image', 'default', '2014-05-29 20:33:54'),
+(32, 'image', 'default', '2014-05-29 20:34:35'),
+(33, 'image', 'default', '2014-05-29 20:35:20'),
+(34, 'image', 'default', '2014-05-29 20:36:05'),
+(35, 'image', 'default', '2014-05-29 20:36:44'),
+(36, 'image', 'default', '2014-05-29 20:37:23'),
+(37, 'image', 'default', '2014-05-29 20:38:09'),
+(38, 'image', 'default', '2014-05-29 20:38:48'),
+(39, 'image', 'default', '2014-05-29 20:39:24'),
+(40, 'image', 'default', '2014-05-29 20:40:20'),
+(41, 'image', 'default', '2014-05-29 20:41:02'),
+(42, 'image', 'default', '2014-05-29 20:41:35'),
+(43, 'image', 'default', '2014-05-29 20:42:31'),
+(44, 'vimeo', 'default', '2014-05-29 23:49:57'),
+(45, 'vimeo', 'default', '2014-05-30 04:16:37'),
+(46, 'youtube', 'default', '2014-05-30 04:28:37');
+
+CREATE TABLE IF NOT EXISTS `neuro_article_lang` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `id_lang` int(15) DEFAULT NULL,
+    `article_id` int(15) DEFAULT NULL,
+    `article_name` tinytext,
+    `article_description` mediumtext,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=52;
+
+INSERT INTO `neuro_article_lang` (`id`, `id_lang`, `article_id`, `article_name`, `article_description`) VALUES
+(1, 1, 1, 'Sed quam purus', 'Vestibulum molestie volutpat nisl vel lobortis. Nam malesuada vel neque vel suscipit. Suspendisse eget tortor a nisi consequat interdum lobortis vel neque. Vivamus convallis hendrerit leo quis varius. Duis sit amet urna id leo sodales bibendum at a sem. Nam posuere nulla in velit dapibus semper. Integer eget leo interdum, lacinia turpis ullamcorper, pellentesque lectus.<br />In tortor ante, pharetra sit amet elit ac, pulvinar ullamcorper sapien. In a mauris lacinia, rhoncus eros eget, sollicitudin lectus. Proin eu libero imperdiet, dapibus ipsum in, sagittis tortor. Sed fermentum, augue mollis semper scelerisque, odio arcu tempor est, ultricies sollicitudin tortor dui quis diam. Curabitur sit amet imperdiet magna, quis feugiat est. Mauris blandit, arcu ut dapibus lacinia, dui ligula volutpat ante, scelerisque iaculis dolor lacus at velit. Cras pulvinar augue a purus hendrerit, iaculis tincidunt lectus hendrerit. Morbi auctor aliquet mattis. Proin tempus, felis vitae varius pretium, augue mi malesuada sem, ac placerat metus erat ut purus. Integer elementum tristique dolor, at imperdiet tellus tempor sit amet. Mauris fringilla, tellus vitae posuere lobortis, orci orci euismod ipsum, non ultrices odio lorem vel sem.'),
+(2, 1, 2, ' Nam malesuada vel', 'Mauris elit tellus, vestibulum sed cursus eget, volutpat et nisl. Aenean ac vulputate tortor. Nullam lacinia massa mauris, et vestibulum lorem euismod sed.<br />\n<br />\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus a mi iaculis nulla rhoncus auctor. '),
+(3, 1, 3, 'Ut dapibus odio ut', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum est luctus tortor commodo lacinia. Phasellus et sagittis eros. Sed quam purus, sollicitudin et hendrerit in, fermentum in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed et nulla vitae metus lacinia facilisis. Vivamus tincidunt vel odio eget pharetra. Suspendisse elementum, libero at consequat ultricies, erat lorem tempor lacus, sed mollis metus nibh ac justo. Integer in tortor at erat convallis vestibulum in et libero. Aliquam lorem urna, feugiat ut justo eget, malesuada gravida magna.<br /><br />Vestibulum molestie volutpat nisl vel lobortis. Nam malesuada vel neque vel suscipit. '),
+(4, 1, 4, 'Sed quam purus, sollicitudin', 'Sed et nulla vitae metus lacinia facilisis. Vivamus tincidunt vel odio eget pharetra. Suspendisse elementum, libero at consequat ultricies, erat lorem tempor lacus, sed mollis metus nibh ac justo. Integer in tortor at erat convallis vestibulum in et libero. Aliquam lorem urna, feugiat ut justo eget, malesuada gravida magna.'),
+(5, 1, 5, 'Ligula nisl imperdiet arcu', 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas nec commodo ante. Cras aliquet libero risus, sit amet vehicula eros porta eu. Integer pulvinar, nunc quis varius sagittis, justo metus gravida eros, ac lobortis odio est eget nulla. Mauris elit tellus, vestibulum sed cursus eget, volutpat et nisl. Aenean ac vulputate tortor. Nullam lacinia massa mauris, et vestibulum lorem euismod sed.<br />\n<br />\nVestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.'),
+(6, 1, 6, 'Sed et nulla vitae metus', 'In tortor ante, pharetra sit amet elit ac, pulvinar ullamcorper sapien. In a mauris lacinia, rhoncus eros eget, sollicitudin lectus. Proin eu libero imperdiet, dapibus ipsum in, sagittis tortor. Sed fermentum, augue mollis semper scelerisque, odio arcu tempor est, ultricies sollicitudin tortor dui quis diam. Curabitur sit amet imperdiet magna, quis feugiat est. Mauris blandit, arcu ut dapibus lacinia, dui ligula volutpat ante, scelerisque iaculis dolor lacus at velit. Cras pulvinar augue a purus hendrerit, iaculis tincidunt lectus hendrerit. Morbi auctor aliquet mattis. Proin tempus, felis vitae varius pretium, augue mi malesuada sem, ac placerat metus erat ut purus. Integer elementum tristique dolor, at imperdiet tellus tempor sit amet. Mauris fringilla, tellus vitae posuere lobortis, orci orci euismod ipsum, non ultrices odio lorem vel sem.'),
+(7, 1, 7, ' Vivamus convallis hendrerit', 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas nec commodo ante. Cras aliquet libero risus, sit amet vehicula eros porta eu.'),
+(8, 1, 8, 'Phasellus et sagittis', 'Vestibulum molestie volutpat nisl vel lobortis. Nam malesuada vel neque vel suscipit. Suspendisse eget tortor a nisi consequat interdum lobortis vel neque. Vivamus convallis hendrerit leo quis varius. Duis sit amet urna id leo sodales bibendum at a sem. Nam posuere nulla in velit dapibus semper. Integer eget leo interdum, lacinia turpis ullamcorper, pellentesque lectus.'),
+(9, 1, 9, 'Curabitur sit amet', 'ncidunt lectus hendrerit. Morbi auctor aliquet mattis. Proin tempus, felis vitae varius pretium, augue mi malesuada sem, ac placerat metus erat ut purus. Integer elementum tristique dolor, at imperdiet tellus tempor sit amet. Mauris fringilla, tellus vitae posuere lobortis, orci orci euismod ipsum, non ultrices odio lorem vel sem.<br />\n<br />\nInterdum et malesuada fames ac ante ipsum primis in faucibus. '),
+(10, 1, 10, ' Aliquam lorem urna', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum est luctus tortor commodo lacinia. Phasellus et sagittis eros. Sed quam purus, sollicitudin et hendrerit in, fermentum in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed et nulla vitae metus lacinia facilisis. Vivamus tincidunt vel odio eget pharetra. Suspendisse elementum, libero at consequat ultricies, erat lorem tempor lacus, sed mollis metus nibh ac justo. Integer in tortor at erat convallis vestibulum in et libero. Aliquam lorem urna, feugiat ut justo eget, malesuada gravida magna.'),
+(11, 1, 11, 'Morbi auctor aliquet', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus a mi iaculis nulla rhoncus auctor. Ut dapibus odio ut nunc viverra facilisis. Quisque non fermentum nisi. Sed non felis a nunc sagittis molestie. Curabitur sed dolor non nisi sollicitudin suscipit sed ac arcu. Integer ipsum nulla, laoreet eget mollis at, tincidunt eget nibh. Donec tincidunt, est at commodo pulvinar, ligula nisl imperdiet arcu, consectetur posuere dui libero eget libero. Donec vel dolor sit amet tortor consequat tempus.'),
+(12, 1, 12, 'In tortor ante', 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas nec commodo ante. Cras aliquet libero risus, sit amet vehicula eros porta eu. Integer pulvinar, nunc quis varius sagittis, justo metus gravida eros, ac lobortis odio est eget nulla. Mauris elit tellus, vestibulum sed cursus eget, volutpat et nisl. Aenean ac vulputate tortor. Nullam lacinia massa mauris, et vestibulum lorem euismod sed.'),
+(13, 1, 13, 'Proin eu libero imperdiet', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus a mi iaculis nulla rhoncus auctor. Ut dapibus odio ut nunc viverra facilisis. Quisque non fermentum nisi. Sed non felis a nunc sagittis molestie. Curabitur sed dolor non nisi sollicitudin suscipit sed ac arcu. Integer ipsum nulla, laoreet eget mollis at, tincidunt eget nibh. Donec tincidunt, est at commodo pulvinar, ligula nisl imperdiet arcu, consectetur posuere dui libero eget libero. Donec vel dolor sit amet tortor consequat tempus.'),
+(14, 1, 14, 'Curabitur sit amet', 'Vestibulum molestie volutpat nisl vel lobortis. Nam malesuada vel neque vel suscipit. Suspendisse eget tortor a nisi consequat interdum lobortis vel neque. Vivamus convallis hendrerit leo quis varius. Duis sit amet urna id leo sodales bibendum at a sem. Nam posuere nulla in velit dapibus semper. Integer eget leo interdum, lacinia turpis ullamcorper, pellentesque lectus.'),
+(15, 1, 15, 'Malesuada gravida magna', 'Vestibulum molestie volutpat nisl vel lobortis. Nam malesuada vel neque vel suscipit. Suspendisse eget tortor a nisi consequat interdum lobortis vel neque. Vivamus convallis hendrerit leo quis varius. Duis sit amet urna id leo sodales bibendum at a sem. Nam posuere nulla in velit dapibus semper. Integer eget leo interdum, lacinia turpis ullamcorper, pellentesque lectus.'),
+(16, 1, 16, 'Proin eu libero imperdiet', 'Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas nec commodo ante. Cras aliquet libero risus, sit amet vehicula eros porta eu. Integer pulvinar, nunc quis varius sagittis, justo metus gravida eros, ac lobortis odio est eget nulla. Mauris elit tellus, vestibulum sed cursus eget, volutpat et nisl. Aenean ac vulputate tortor. Nullam lacinia massa mauris, et vestibulum lorem euismod sed.<br />\n'),
+(17, 1, 17, 'Suspendisse viverra lectus', 'Suspendisse viverra lectus vel mi iaculis, eu scelerisque eros dignissim. Fusce scelerisque erat sed augue rutrum congue. Praesent blandit ipsum eget faucibus imperdiet. Morbi ante neque, condimentum vel vulputate nec, placerat nec ipsum. In vestibulum, felis ac pellentesque scelerisque, turpis arcu consectetur elit, at dapibus massa nulla sit amet mauris. Nullam lacinia felis sed nibh blandit, nec aliquam dui porta. Aenean venenatis diam nunc, id mollis lorem dictum in. Nulla id dui semper, luctus augue in, feugiat ipsum. Donec facilisis tristique felis, at laoreet lectus accumsan sit amet. Quisque sodales ante luctus condimentum sodales.'),
+(18, 1, 18, 'Phasellus nec tincidunt lacus', 'Phasellus nec tincidunt lacus. Etiam sit amet nisi vestibulum, auctor nisl sed, molestie nisl. Vivamus ac nisi nibh. Maecenas ut augue eget eros congue rutrum. Nulla vulputate euismod est, quis facilisis diam gravida sit amet. Quisque vel ipsum sem. Vestibulum nibh tortor, semper a nisl ac, pulvinar ultricies dui.'),
+(19, 1, 19, 'Sed imperdiet luctus hendrerit', 'Sed imperdiet luctus hendrerit. Nullam hendrerit cursus odio. Phasellus elementum enim ac dolor placerat, a fringilla orci elementum. Quisque ac libero vestibulum, sodales massa ut, commodo tortor. Maecenas eu convallis leo. Nullam sagittis metus tortor, a porta felis suscipit sit amet. Vivamus ipsum augue, scelerisque eleifend nunc sit amet, faucibus aliquam diam. Duis elementum eros sit amet leo dignissim fringilla. Donec laoreet sapien est, vel tempor lacus congue vitae. Donec a tellus et lacus gravida fringilla. Morbi vitae nibh eu lorem pellentesque iaculis non eget erat. Pellentesque malesuada ante sed urna pellentesque blandit. Ut tempus pretium malesuada.'),
+(20, 1, 20, ' Nulla id dui semper', 'Cras fermentum sapien ac sapien faucibus, vitae dignissim augue tempor. Phasellus fermentum sollicitudin metus, ut sodales nisl hendrerit at. Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. '),
+(21, 1, 21, 'Vestibulum at velit', 'Vivamus lectus ipsum, sollicitudin eget odio ut, lobortis aliquet augue. Quisque lobortis vel odio sit amet pellentesque. Etiam interdum massa id eros mattis ultricies. Sed eu elementum tellus, nec dignissim sapien. Duis sed urna ligula. Ut porta ullamcorper massa, et aliquam mi facilisis ac. Ut et sodales eros. Quisque eu justo lacus. Vestibulum molestie nibh nisi, a porttitor libero vulputate vel.'),
+(22, 1, 22, 'Fusce scelerisque erat', 'Quisque in imperdiet lacus, et placerat tortor. Nam purus lectus, sagittis cursus est eget, tincidunt vestibulum lectus. Maecenas iaculis lectus non varius fermentum. Donec egestas erat eu arcu mollis sollicitudin. Nulla congue eu ante id egestas. Suspendisse eu ipsum et sapien ultricies luctus eget nec sapien. Morbi eget tristique turpis, at iaculis nulla. Fusce a vulputate orci. Donec dignissim tincidunt neque, eu cursus risus. Cras adipiscing eu est et lacinia. Donec non pellentesque neque. Aliquam eget fermentum orci. Sed eu urna sit amet leo vestibulum pellentesque at vitae odio. Quisque id semper lectus.'),
+(23, 1, 23, 'Fusce scelerisque erat ', 'Phasellus nec tincidunt lacus. Etiam sit amet nisi vestibulum, auctor nisl sed, molestie nisl. Vivamus ac nisi nibh. Maecenas ut augue eget eros congue rutrum. Nulla vulputate euismod est, quis facilisis diam gravida sit amet. Quisque vel ipsum sem. Vestibulum nibh tortor, semper a nisl ac, pulvinar ultricies dui.'),
+(24, 1, 24, 'Nulla id dui semper', 'Quisque in imperdiet lacus, et placerat tortor. Nam purus lectus, sagittis cursus est eget, tincidunt vestibulum lectus. Maecenas iaculis lectus non varius fermentum. Donec egestas erat eu arcu mollis sollicitudin. Nulla congue eu ante id egestas. Suspendisse eu ipsum et sapien ultricies luctus eget nec sapien. Morbi eget tristique turpis, at iaculis nulla. Fusce a vulputate orci. Donec dignissim tincidunt neque, eu cursus risus. Cras adipiscing eu est et lacinia. Donec non pellentesque neque. Aliquam eget fermentum orci. Sed eu urna sit amet leo vestibulum pellentesque at vitae odio. Quisque id semper lectus. Vestibulum at velit eu sapien tincidunt pretium a ac urna.'),
+(25, 1, 25, 'Curabitur rhoncus', 'Curabitur rhoncus scelerisque consequat. Cras fermentum sapien ac sapien faucibus, vitae dignissim augue tempor. Phasellus fermentum sollicitudin metus, ut sodales nisl hendrerit at. Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. Nullam vitae adipiscing mauris. In accumsan sem in lorem semper, id faucibus enim posuere. Praesent eget urna quis sapien cursus vehicula sagittis sed arcu. Nullam et lobortis quam.<br />\n'),
+(26, 1, 26, 'Suspendisse viverra', 'Phasellus nec tincidunt lacus. Etiam sit amet nisi vestibulum, auctor nisl sed, molestie nisl. Vivamus ac nisi nibh. Maecenas ut augue eget eros congue rutrum. Nulla vulputate euismod est, quis facilisis diam gravida sit amet. Quisque vel ipsum sem. Vestibulum nibh tortor, semper a nisl ac, pulvinar ultricies dui.'),
+(27, 1, 27, 'Aliquam vehicula', 'Cras dignissim fermentum libero nec suscipit. Praesent tincidunt ipsum sit amet nibh porttitor euismod. Vivamus facilisis neque sem, id mattis quam ullamcorper ut. Nulla ac pretium lorem, id feugiat sem. Nullam ac ligula vitae nulla ornare posuere vel vel nisi.'),
+(28, 1, 28, 'Fusce eget turpis', 'Curabitur rhoncus scelerisque consequat. Cras fermentum sapien ac sapien faucibus, vitae dignissim augue tempor. Phasellus fermentum sollicitudin metus, ut sodales nisl hendrerit at. Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. Nullam vitae adipiscing mauris. In accumsan sem in lorem semper, id faucibus enim posuere. Praesent eget urna quis sapien cursus vehicula sagittis sed arcu. Nullam et lobortis quam.'),
+(29, 1, 29, 'Cras fermentum sapien ac', 'Cras imperdiet magna nisl, vulputate commodo sapien facilisis pharetra. Ut tincidunt velit ligula, at blandit tortor consectetur vitae. Cras dignissim fermentum libero nec suscipit. Praesent tincidunt ipsum sit amet nibh porttitor euismod. Vivamus facilisis neque sem, id mattis quam ullamcorper ut. '),
+(30, 1, 30, 'Cras fermentum sapien', 'Vivamus lectus ipsum, sollicitudin eget odio ut, lobortis aliquet augue. Quisque lobortis vel odio sit amet pellentesque. Etiam interdum massa id eros mattis ultricies. Sed eu elementum tellus, nec dignissim sapien. Duis sed urna ligula. Ut porta ullamcorper massa, et aliquam mi facilisis ac. Ut et sodales eros. Quisque eu justo lacus. Vestibulum molestie nibh nisi, a porttitor libero vulputate vel.'),
+(31, 1, 31, 'Cras fermentum sapien ac', 'Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. Nullam vitae adipiscing mauris. In accumsan sem in lorem semper, id faucibus enim posuere. Praesent eget urna quis sapien cursus vehicula sagittis sed arcu. Nullam et lobortis quam.'),
+(32, 1, 32, 'Fusce scelerisque erat', 'Quisque in imperdiet lacus, et placerat tortor. Nam purus lectus, sagittis cursus est eget, tincidunt vestibulum lectus. Maecenas iaculis lectus non varius fermentum. Donec egestas erat eu arcu mollis sollicitudin. Nulla congue eu ante id egestas. Suspendisse eu ipsum et sapien ultricies luctus eget nec sapien. Morbi eget tristique turpis, at iaculis nulla. '),
+(33, 1, 33, ' Donec facilisis tristique felis', 'Curabitur tincidunt leo pretium, lobortis urna vel, hendrerit nunc. Sed fringilla mi at elit ullamcorper lacinia. Morbi venenatis tincidunt nibh, et congue lorem tempor ac. Proin aliquet, purus nec posuere elementum, quam velit faucibus quam, quis imperdiet est ante sed erat. In placerat vulputate libero, id interdum est bibendum in.'),
+(34, 1, 34, 'Cras fermentum sapien', 'Curabitur rhoncus scelerisque consequat. Cras fermentum sapien ac sapien faucibus, vitae dignissim augue tempor. Phasellus fermentum sollicitudin metus, ut sodales nisl hendrerit at. Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. Nullam vitae adipiscing mauris. In accumsan sem in lorem semper, id faucibus enim posuere. Praesent eget urna quis sapien cursus vehicula sagittis sed arcu. Nullam et lobortis quam.'),
+(35, 1, 35, 'Aliquam vehicula accumsan', 'Vivamus facilisis neque sem, id mattis quam ullamcorper ut. Nulla ac pretium lorem, id feugiat sem. Nullam ac ligula vitae nulla ornare posuere vel vel nisi.<br />\n<br />\nPhasellus nec tincidunt lacus.'),
+(36, 1, 36, 'Duis nec nunc in ipsum', 'Curabitur rhoncus scelerisque consequat. Cras fermentum sapien ac sapien faucibus, vitae dignissim augue tempor. Phasellus fermentum sollicitudin metus, ut sodales nisl hendrerit at. Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. Nullam vitae adipiscing mauris. In accumsan sem in lorem semper, id faucibus enim posuere. Praesent eget urna quis sapien cursus vehicula sagittis sed arcu. Nullam et lobortis quam.<br />\n'),
+(37, 1, 37, 'Quisque id semper lectus', 'Phasellus nec tincidunt lacus. Etiam sit amet nisi vestibulum, auctor nisl sed, molestie nisl. Vivamus ac nisi nibh. Maecenas ut augue eget eros congue rutrum. Nulla vulputate euismod est, quis facilisis diam gravida sit amet. Quisque vel ipsum sem. Vestibulum nibh tortor, semper a nisl ac, pulvinar ultricies dui.'),
+(38, 1, 38, 'Cras interdum lacinia ipsum', 'Phasellus nec tincidunt lacus. Etiam sit amet nisi vestibulum, auctor nisl sed, molestie nisl. Vivamus ac nisi nibh. Maecenas ut augue eget eros congue rutrum. Nulla vulputate euismod est, quis facilisis diam gravida sit amet. Quisque vel ipsum sem. Vestibulum nibh tortor, semper a nisl ac, pulvinar ultricies dui.'),
+(39, 1, 39, 'Cras fermentum sapien ac', 'Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. Nullam vitae adipiscing mauris. In accumsan sem in lorem semper, id faucibus enim posuere. Praesent eget urna quis sapien cursus vehicula sagittis sed arcu. Nullam et lobortis quam.'),
+(40, 1, 40, 'Fusce scelerisque erat sed', 'Duis sed urna ligula. Ut porta ullamcorper massa, et aliquam mi facilisis ac. Ut et sodales eros. Quisque eu justo lacus. Vestibulum molestie nibh nisi, a porttitor libero vulputate vel.<br />\n<br />\nAenean nec nulla nisl. Cras interdum lacinia ipsum, at bibendum odio viverra quis. Proin nec mi et velit condimentum rhoncus sit amet eget felis.'),
+(41, 1, 41, 'Fusce a vulputate orci', 'Vivamus lectus ipsum, sollicitudin eget odio ut, lobortis aliquet augue. Quisque lobortis vel odio sit amet pellentesque. Etiam interdum massa id eros mattis ultricies. Sed eu elementum tellus, nec dignissim sapien. Duis sed urna ligula. Ut porta ullamcorper massa, et aliquam mi facilisis ac. Ut et sodales eros. Quisque eu justo lacus. Vestibulum molestie nibh nisi, a porttitor libero vulputate vel.'),
+(42, 1, 42, 'Donec facilisis tristique', 'Sed consectetur tellus sed nulla rhoncus, ac eleifend enim dictum. Nulla tempor mi quis tincidunt eleifend. Aliquam non euismod diam. Quisque tempor leo vitae egestas tristique. Curabitur tincidunt leo pretium, lobortis urna vel, hendrerit nunc. Sed fringilla mi at elit ullamcorper lacinia. Morbi venenatis tincidunt nibh, et congue lorem tempor ac.'),
+(43, 1, 43, 'Quisque sodales ante', 'Curabitur rhoncus scelerisque consequat. Cras fermentum sapien ac sapien faucibus, vitae dignissim augue tempor. Phasellus fermentum sollicitudin metus, ut sodales nisl hendrerit at. Fusce eget turpis quis elit pellentesque hendrerit. Vestibulum et dignissim erat, id iaculis nunc. Maecenas elit sem, facilisis quis dapibus eu, rhoncus vel massa. Nullam vitae adipiscing mauris. In accumsan sem in lorem semper, id faucibus enim posuere. Praesent eget urna quis sapien cursus vehicula sagittis sed arcu. Nullam et lobortis quam.'),
+(46, 1, 44, 'Phasellus nec risus', 'In lorem massa, tempor eget augue non, fermentum ullamcorper sem. Quisque tellus mi, lobortis sit amet sollicitudin in, scelerisque vitae ante. Aliquam dictum ipsum a ante adipiscing, at gravida massa viverra. Aenean ut erat quis orci placerat ullamcorper. Phasellus nec risus rhoncus, bibendum metus a, bibendum velit. Donec mollis ut nibh at aliquam. Integer eu dictum dui, vel egestas mauris. Sed in egestas lacus. Vivamus hendrerit semper tortor, eget aliquam lectus malesuada eget. Etiam laoreet nisl ac feugiat tempus. Aenean tempus commodo lectus, ac accumsan mauris consequat et. Pellentesque ut mauris malesuada mi egestas commodo sit amet nec dolor. Nam vitae lectus sem.'),
+(47, 1, 45, 'Vivamus est ante', 'Morbi lacinia dignissim orci, vitae euismod odio mattis nec. Ut elementum sapien enim, quis suscipit lectus accumsan tincidunt. Ut ligula arcu, pellentesque quis tempus et, euismod a erat. Maecenas ullamcorper ac lectus a luctus. Aenean hendrerit, turpis quis commodo lobortis, nibh lacus pellentesque sem, a vehicula ligula metus et sem. Vestibulum posuere metus at urna fringilla pulvinar. Ut varius mollis leo, non euismod augue mattis at. Integer congue turpis id urna sollicitudin ultricies.'),
+(51, 1, 46, 'Curabitur magna erat', 'Nam sed dolor et lacus vulputate interdum. Curabitur magna erat, volutpat non pellentesque ac, feugiat pretium orci. Nam malesuada vestibulum mollis. Quisque arcu mi, aliquet nec odio sed, scelerisque consectetur erat. Nullam pharetra, lorem sed consectetur condimentum, elit eros sagittis enim, laoreet semper neque sapien eu ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse sapien nulla, vehicula vel metus vitae, molestie placerat augue. Duis sed magna suscipit, rutrum augue vel, blandit dolor. Morbi leo nunc, tristique quis fermentum eget, vehicula at lacus.');
+
+CREATE TABLE IF NOT EXISTS `neuro_category` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `parent` int(15) DEFAULT NULL,
+    `category_order` int(15) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+
+INSERT INTO `neuro_category` (`id`, `parent`, `category_order`) VALUES
+(1, 0, 0);
+
+CREATE TABLE IF NOT EXISTS `neuro_category_lang` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `id_lang` int(15) DEFAULT NULL,
+    `category_id` int(15) DEFAULT NULL,
+    `category_name` varchar(25) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+
+INSERT INTO `neuro_category_lang` (`id`, `id_lang`, `category_id`, `category_name`) VALUES
+(1, 1, 1, 'home');
+
+CREATE TABLE IF NOT EXISTS `neuro_config` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `property` varchar(50) NOT NULL DEFAULT '',
+    `value` varchar(50) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=17;
+
+INSERT INTO `neuro_config` (`id`, `property`, `value`) VALUES
+(1, '__BASE_URI__', 'http://www.neurotix.es/sandbox/'),
+(2, '_THEME_NAME_', 'basic'),
+(3, '__NEURO_BASE_URI__', '/sandbox/'),
+(4, '__NEURO_ADMIN_URI__', '/sandbox/admin/'),
+(5, '__SITE_TITLE__', 'Alejandro Albarracín'),
+(6, '_IMG_UPLOADS_', '/uploads/img/'),
+(7, '_ADMIN_NAME_', 'admin'),
+(8, '_THEME_NAME_', 'basic'),
+(9, '_DB_NAME_', 'neurocms'),
+(10, '_MYSQL_ENGINE_', 'InnoDB'),
+(11, '_DB_SERVER_', 'localhost'),
+(12, '_DB_USER_', 'neurotix'),
+(13, '_DB_PREFIX_', 'neuro_'),
+(14, '_DB_PASSWD_', 'z43ngfBm'),
+(15, '_DB_TYPE_', 'MySQL'),
+(16, '_UID_', 'c8bc3d0e-e6b5-afac-6693-536fa323c25b');
+
+CREATE TABLE IF NOT EXISTS `neuro_lang` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `lang` varchar(15) DEFAULT NULL,
+    `lang_shortcut` varchar(3) DEFAULT NULL,
+    `lang_predefined` int(1) DEFAULT '0',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+
+INSERT INTO `neuro_lang` (`id`, `lang`, `lang_shortcut`, `lang_predefined`) VALUES
+(1, 'English', 'EN', 1);
+
+CREATE TABLE IF NOT EXISTS `neuro_uploaded_files` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `folder` int(15) DEFAULT NULL,
+    `thumbnail` tinyint(1) DEFAULT NULL,
+    `file_name` text,
+    PRIMARY KEY (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=267;
+
+INSERT INTO `neuro_uploaded_files` (`id`, `folder`, `thumbnail`, `file_name`) VALUES
+(92, 1, NULL, '1-d3368_29-05-2014_21-52-48.jpg'),
+(93, 1, 1, '1-593ec_29-05-2014_21-52-50.jpg'),
+(94, 1, NULL, '1-908c4_29-05-2014_21-52-51.jpg'),
+(95, 1, NULL, '1-55f71_29-05-2014_21-52-53.jpg'),
+(96, 2, NULL, '2-6daf7_29-05-2014_21-57-09.jpg'),
+(97, 2, NULL, '2-166e4_29-05-2014_21-57-13.jpg'),
+(98, 2, 1, '2-6e4d4_29-05-2014_21-57-14.jpg'),
+(99, 2, NULL, '2-7774a_29-05-2014_21-57-17.jpg'),
+(100, 3, 1, '3-55f7a_29-05-2014_21-59-10.jpg'),
+(101, 3, NULL, '3-07129_29-05-2014_21-59-11.jpg'),
+(102, 3, NULL, '3-ae3a1_29-05-2014_21-59-12.jpg'),
+(103, 3, NULL, '3-24801_29-05-2014_21-59-12.jpg'),
+(104, 4, 1, '4-5049f_29-05-2014_22-01-40.jpg'),
+(105, 4, NULL, '4-f2a68_29-05-2014_22-01-42.jpg'),
+(106, 4, NULL, '4-91432_29-05-2014_22-01-43.jpg'),
+(107, 4, NULL, '4-df30d_29-05-2014_22-01-44.jpg'),
+(108, 5, 1, '5-31da3_29-05-2014_22-08-38.jpg'),
+(109, 5, NULL, '5-d8f4a_29-05-2014_22-08-40.jpg'),
+(110, 5, NULL, '5-296ae_29-05-2014_22-08-41.jpg'),
+(111, 5, NULL, '5-12901_29-05-2014_22-08-43.jpg'),
+(112, 6, 1, '6-08d23_29-05-2014_22-10-18.jpg'),
+(113, 6, NULL, '6-5dbb3_29-05-2014_22-10-19.jpg'),
+(114, 6, NULL, '6-a0110_29-05-2014_22-10-23.jpg'),
+(115, 6, NULL, '6-e16f0_29-05-2014_22-10-26.jpg'),
+(116, 6, NULL, '6-05803_29-05-2014_22-10-27.jpg'),
+(117, 7, NULL, '7-17a27_29-05-2014_22-13-12.JPG'),
+(118, 7, NULL, '7-ce2e2_29-05-2014_22-13-13.JPG'),
+(119, 7, 1, '7-81bdc_29-05-2014_22-13-13.JPG'),
+(120, 7, NULL, '7-0a781_29-05-2014_22-13-13.JPG'),
+(121, 8, NULL, '8-1c9c3_29-05-2014_22-14-01.JPG'),
+(122, 8, NULL, '8-815fb_29-05-2014_22-14-04.JPG'),
+(123, 8, NULL, '8-713fe_29-05-2014_22-14-04.JPG'),
+(124, 8, 1, '8-5c6c9_29-05-2014_22-14-05.JPG'),
+(125, 9, NULL, '9-5bbe9_29-05-2014_22-14-55.JPG'),
+(126, 9, NULL, '9-a18b7_29-05-2014_22-14-57.JPG'),
+(127, 9, 1, '9-af1bc_29-05-2014_22-14-59.JPG'),
+(128, 10, NULL, '10-b0c88_29-05-2014_22-16-09.jpg'),
+(129, 10, NULL, '10-4ab60_29-05-2014_22-16-09.jpg'),
+(130, 10, 1, '10-c7347_29-05-2014_22-16-09.jpg'),
+(131, 10, NULL, '10-18540_29-05-2014_22-16-10.jpg'),
+(132, 11, NULL, '11-26a0e_29-05-2014_22-16-56.jpg'),
+(133, 11, 1, '11-034cc_29-05-2014_22-16-56.jpg'),
+(134, 11, NULL, '11-067fe_29-05-2014_22-16-57.jpg'),
+(135, 11, NULL, '11-9871f_29-05-2014_22-16-57.jpg'),
+(136, 12, NULL, '12-88a84_29-05-2014_22-17-42.jpg'),
+(137, 12, NULL, '12-f4d1f_29-05-2014_22-17-43.jpg'),
+(138, 12, NULL, '12-8d734_29-05-2014_22-17-43.jpg'),
+(139, 12, 1, '12-185b1_29-05-2014_22-17-44.jpg'),
+(140, 13, NULL, '13-5d926_29-05-2014_22-18-24.jpg'),
+(141, 13, NULL, '13-d2872_29-05-2014_22-18-24.jpg'),
+(142, 13, NULL, '13-46821_29-05-2014_22-18-25.jpg'),
+(143, 13, 1, '13-304e9_29-05-2014_22-18-25.jpg'),
+(144, 14, NULL, '14-9bfa4_29-05-2014_22-18-59.jpg'),
+(145, 14, NULL, '14-5f3b2_29-05-2014_22-18-59.jpg'),
+(146, 14, NULL, '14-8d488_29-05-2014_22-18-59.jpg'),
+(147, 14, 1, '14-9d790_29-05-2014_22-19-01.jpg'),
+(148, 14, NULL, '14-57e4f_29-05-2014_22-19-01.jpg'),
+(149, 15, NULL, '15-d770c_29-05-2014_22-20-04.jpg'),
+(150, 15, NULL, '15-8ba91_29-05-2014_22-20-04.jpg'),
+(151, 15, NULL, '15-d9eaf_29-05-2014_22-20-04.jpg'),
+(152, 15, 1, '15-18717_29-05-2014_22-20-04.jpg'),
+(153, 16, 1, '16-eea77_29-05-2014_22-21-16.JPG'),
+(154, 16, NULL, '16-ef424_29-05-2014_22-21-17.JPG'),
+(155, 16, NULL, '16-f6cd4_29-05-2014_22-21-18.JPG'),
+(156, 16, NULL, '16-84439_29-05-2014_22-21-19.JPG'),
+(157, 17, NULL, '17-308d8_29-05-2014_22-22-09.jpg'),
+(158, 17, 1, '17-6e62b_29-05-2014_22-22-10.jpg'),
+(159, 17, NULL, '17-a5e1f_29-05-2014_22-22-11.jpg'),
+(160, 17, NULL, '17-7279a_29-05-2014_22-22-11.jpg'),
+(161, 18, NULL, '18-5f7e0_29-05-2014_22-22-59.jpg'),
+(162, 18, NULL, '18-a0677_29-05-2014_22-22-59.jpg'),
+(163, 18, 1, '18-556e7_29-05-2014_22-23-00.jpg'),
+(164, 18, NULL, '18-219f9_29-05-2014_22-23-00.jpg'),
+(165, 19, NULL, '19-2f127_29-05-2014_22-23-34.jpg'),
+(166, 19, 1, '19-a74ce_29-05-2014_22-23-36.jpg'),
+(167, 19, NULL, '19-c77bb_29-05-2014_22-23-36.jpg'),
+(168, 19, NULL, '19-645de_29-05-2014_22-23-36.jpg'),
+(169, 20, NULL, '20-fb69c_29-05-2014_22-24-19.jpg'),
+(170, 20, NULL, '20-4895d_29-05-2014_22-24-20.jpg'),
+(171, 20, NULL, '20-6854e_29-05-2014_22-24-22.jpg'),
+(172, 20, 1, '20-693c9_29-05-2014_22-24-22.jpg'),
+(173, 21, NULL, '21-974ff_29-05-2014_22-25-38.jpg'),
+(174, 21, NULL, '21-5f529_29-05-2014_22-25-38.jpg'),
+(175, 21, 1, '21-e7fbc_29-05-2014_22-25-38.jpg'),
+(176, 21, NULL, '21-ca315_29-05-2014_22-25-39.jpg'),
+(177, 22, 1, '22-4f24f_29-05-2014_22-26-27.jpg'),
+(178, 22, NULL, '22-0cd7b_29-05-2014_22-26-27.jpg'),
+(179, 22, NULL, '22-cf110_29-05-2014_22-26-28.jpg'),
+(180, 22, NULL, '22-6664d_29-05-2014_22-26-28.jpg'),
+(181, 23, NULL, '23-429d6_29-05-2014_22-27-39.jpg'),
+(182, 23, 1, '23-aa13a_29-05-2014_22-27-40.jpg'),
+(183, 23, NULL, '23-4b7af_29-05-2014_22-27-41.jpg'),
+(184, 24, NULL, '24-4030c_29-05-2014_22-28-18.jpg'),
+(185, 24, 1, '24-f5083_29-05-2014_22-28-21.jpg'),
+(186, 24, NULL, '24-aa07a_29-05-2014_22-28-21.jpg'),
+(187, 25, NULL, '25-e6b40_29-05-2014_22-29-01.JPG'),
+(188, 25, NULL, '25-8ffe2_29-05-2014_22-29-01.JPG'),
+(189, 25, NULL, '25-9f69c_29-05-2014_22-29-02.JPG'),
+(190, 25, 1, '25-3c1b5_29-05-2014_22-29-02.JPG'),
+(191, 25, NULL, '25-9308e_29-05-2014_22-29-05.JPG'),
+(192, 26, NULL, '26-a412d_29-05-2014_22-29-54.jpg'),
+(193, 26, NULL, '26-16ef7_29-05-2014_22-29-55.jpg'),
+(194, 26, NULL, '26-76dfa_29-05-2014_22-29-55.jpg'),
+(195, 26, 1, '26-b8ce3_29-05-2014_22-29-56.jpg'),
+(196, 27, 1, '27-e54da_29-05-2014_22-30-30.jpg'),
+(197, 27, NULL, '27-0bc6a_29-05-2014_22-30-30.jpg'),
+(198, 27, NULL, '27-4422d_29-05-2014_22-30-30.jpg'),
+(199, 27, NULL, '27-29c2c_29-05-2014_22-30-32.jpg'),
+(200, 28, NULL, '28-007ca_29-05-2014_22-31-12.jpg'),
+(201, 28, NULL, '28-ed127_29-05-2014_22-31-13.jpg'),
+(202, 28, 1, '28-b115a_29-05-2014_22-31-13.jpg'),
+(203, 28, NULL, '28-1b447_29-05-2014_22-31-14.jpg'),
+(204, 29, NULL, '29-ffe84_29-05-2014_22-31-58.jpg'),
+(205, 29, NULL, '29-402cf_29-05-2014_22-31-58.jpg'),
+(206, 29, NULL, '29-252ae_29-05-2014_22-31-58.jpg'),
+(207, 29, 1, '29-18148_29-05-2014_22-31-59.jpg'),
+(208, 30, 1, '30-90711_29-05-2014_22-33-07.jpg'),
+(209, 30, NULL, '30-eaec7_29-05-2014_22-33-08.jpg'),
+(210, 30, NULL, '30-294ce_29-05-2014_22-33-08.jpg'),
+(211, 30, NULL, '30-7b229_29-05-2014_22-33-08.jpg'),
+(212, 31, 1, '31-c470b_29-05-2014_22-33-39.jpg'),
+(213, 31, NULL, '31-7f976_29-05-2014_22-33-40.jpg'),
+(214, 31, NULL, '31-4feb3_29-05-2014_22-33-40.jpg'),
+(215, 31, NULL, '31-f919f_29-05-2014_22-33-40.jpg'),
+(216, 31, NULL, '31-abe4e_29-05-2014_22-33-40.jpg'),
+(217, 32, NULL, '32-d4137_29-05-2014_22-34-21.jpg'),
+(218, 32, NULL, '32-9f63e_29-05-2014_22-34-21.jpg'),
+(219, 32, 1, '32-0bca7_29-05-2014_22-34-21.jpg'),
+(220, 32, NULL, '32-a8ad1_29-05-2014_22-34-22.jpg'),
+(221, 33, NULL, '33-96125_29-05-2014_22-35-11.jpg'),
+(222, 33, NULL, '33-142f4_29-05-2014_22-35-11.jpg'),
+(223, 33, 1, '33-ea8ff_29-05-2014_22-35-11.jpg'),
+(224, 33, NULL, '33-f7af8_29-05-2014_22-35-12.jpg'),
+(225, 34, NULL, '34-e2ef2_29-05-2014_22-35-51.jpg'),
+(226, 34, NULL, '34-4e47e_29-05-2014_22-35-52.jpg'),
+(227, 34, 1, '34-2e95e_29-05-2014_22-35-53.jpg'),
+(228, 34, NULL, '34-37ba0_29-05-2014_22-35-53.jpg'),
+(229, 35, NULL, '35-43980_29-05-2014_22-36-34.jpg'),
+(230, 35, 1, '35-2fc41_29-05-2014_22-36-36.jpg'),
+(231, 35, NULL, '35-06799_29-05-2014_22-36-36.jpg'),
+(232, 35, NULL, '35-3ca05_29-05-2014_22-36-36.jpg'),
+(233, 36, NULL, '36-01b9d_29-05-2014_22-37-17.jpg'),
+(234, 36, NULL, '36-ec122_29-05-2014_22-37-18.jpg'),
+(235, 36, 1, '36-36ddd_29-05-2014_22-37-19.jpg'),
+(236, 36, NULL, '36-6f115_29-05-2014_22-37-19.jpg'),
+(237, 37, NULL, '37-fd7f7_29-05-2014_22-38-02.jpg'),
+(238, 37, 1, '37-e3a1b_29-05-2014_22-38-03.jpg'),
+(239, 37, NULL, '37-26c91_29-05-2014_22-38-04.jpg'),
+(240, 37, NULL, '37-6386f_29-05-2014_22-38-04.jpg'),
+(241, 38, 1, '38-89584_29-05-2014_22-38-35.jpg'),
+(242, 38, NULL, '38-2edcd_29-05-2014_22-38-36.jpg'),
+(243, 38, NULL, '38-576da_29-05-2014_22-38-36.jpg'),
+(244, 38, NULL, '38-7bbaf_29-05-2014_22-38-37.jpg'),
+(245, 38, NULL, '38-84ded_29-05-2014_22-38-38.jpg'),
+(246, 39, NULL, '39-be70c_29-05-2014_22-39-14.jpg'),
+(247, 39, NULL, '39-a774f_29-05-2014_22-39-14.jpg'),
+(248, 39, 1, '39-7e0d4_29-05-2014_22-39-14.jpg'),
+(249, 39, NULL, '39-f46f1_29-05-2014_22-39-14.jpg'),
+(250, 39, NULL, '39-84ed2_29-05-2014_22-39-15.jpg'),
+(251, 40, NULL, '40-74fb9_29-05-2014_22-39-52.jpg'),
+(252, 40, NULL, '40-9150b_29-05-2014_22-39-53.jpg'),
+(253, 40, 1, '40-35796_29-05-2014_22-39-53.jpg'),
+(254, 40, NULL, '40-72c61_29-05-2014_22-39-54.jpg'),
+(255, 41, NULL, '41-4ae70_29-05-2014_22-40-46.jpg'),
+(256, 41, 1, '41-06062_29-05-2014_22-40-46.jpg'),
+(257, 41, NULL, '41-a00f0_29-05-2014_22-40-47.jpg'),
+(258, 41, NULL, '41-13b42_29-05-2014_22-40-47.jpg'),
+(259, 42, 1, '42-41a4c_29-05-2014_22-41-20.jpg'),
+(260, 42, NULL, '42-fba1f_29-05-2014_22-41-21.jpg'),
+(261, 42, NULL, '42-1283a_29-05-2014_22-41-21.jpg'),
+(262, 42, NULL, '42-7dd0c_29-05-2014_22-41-21.jpg'),
+(263, 43, NULL, '43-10e85_29-05-2014_22-42-06.jpg'),
+(264, 43, NULL, '43-6a938_29-05-2014_22-42-06.jpg'),
+(265, 43, 1, '43-e1f55_29-05-2014_22-42-06.jpg'),
+(266, 43, NULL, '43-f0f63_29-05-2014_22-42-06.jpg');
+
+CREATE TABLE IF NOT EXISTS `neuro_video` (
+    `id` int(15) NOT NULL AUTO_INCREMENT,
+    `article_id` int(15) DEFAULT NULL,
+    `video_id` varchar(15) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=6;
+
+INSERT INTO `neuro_video` (`id`, `article_id`, `video_id`) VALUES
+(1, 44, '88059181'),
+(2, 45, '96828488'),
+(5, 46, 'qQcNfFJxIOs');
+ */
