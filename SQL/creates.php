@@ -110,3 +110,4 @@ CREATE TABLE IF NOT EXISTS `neuro_video` (
     `video_id` varchar(15) DEFAULT NULL,
     PRIMARY KEY (`id`)
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=6;
+*/
