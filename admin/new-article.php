@@ -70,7 +70,7 @@ try {
     array_push($js_array, 'js/new-article.js');
     array_push($js_array, __BASE_URI__ . 'admin/uploader/js/vendor/jquery.ui.widget.js');
     array_push($js_array, 'http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js');
-    array_push($js_array, 'http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js');
+    array_push($js_array, 'http://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js');
     array_push($js_array, 'http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js');
     array_push($js_array, 'http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js');
     array_push($js_array, 'http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js');
