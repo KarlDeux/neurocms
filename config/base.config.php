@@ -17,5 +17,3 @@ define('_DB_PASSWD_', 'password');
 define('_DB_TYPE_', 'MySQL');
 define('_UID_', 'c8bc3d0e-e6b5-afac-6693-536fa323c25b');
 define('_FRIENDLY_URL_', 'true');
-
-?>
