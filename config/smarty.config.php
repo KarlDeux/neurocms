@@ -1,10 +1,5 @@
 <?php
 
-/*
- * Autor: Neurotix
- * Copyright.
- */
-
 require_once(_NEURO_SMARTY_DIR_.'Smarty.class.php');
 
 global $smarty;
