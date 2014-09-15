@@ -1,10 +1,5 @@
 <?php
 
-/*
- * Autor: Neurotix
- * Copyright.
- */
-
 /* Theme URLs */
 define('_THEMES_DIR_',     'themes/');
 define('_THEME_DIR_',      _THEMES_DIR_._THEME_NAME_.'/');
